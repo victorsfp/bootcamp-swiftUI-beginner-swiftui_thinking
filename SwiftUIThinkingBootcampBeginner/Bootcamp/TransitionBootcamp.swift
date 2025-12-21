@@ -1,0 +1,45 @@
+//
+//  TransitionBootcamp.swift
+//  SwiftUIThinkingBootcampBeginner
+//
+//  Created by Victor dos Santos Feitosa on 21/12/25.
+//
+
+import SwiftUI
+
+struct TransitionBootcamp: View {
+    
+    @State var showView: Bool = false
+    
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            VStack {
+                Button("Button") {
+                    showView.toggle()
+                }
+                Spacer()
+            }
+            
+            if showView {
+                RoundedRectangle(cornerRadius: 30)
+                    .frame(height: UIScreen.main.bounds.height * 0.5)
+//                    .transition(AnyTransition.opacity.animation(.easeInOut))
+//                    .transition(AnyTransition.scale.animation(.easeInOut))
+//                    .transition(.asymmetric(
+//                        insertion: .move(edge: .leading),
+//                        removal: .move(edge: .bottom)))
+                    .transition(.asymmetric(
+                        insertion: .move(edge: .leading),
+                        removal: AnyTransition.opacity.animation(.easeInOut)
+                    ))
+                    .animation(.easeInOut)
+            }
+            
+        }
+        .edgesIgnoringSafeArea(.bottom)
+    }
+}
+
+#Preview {
+    TransitionBootcamp()
+}
