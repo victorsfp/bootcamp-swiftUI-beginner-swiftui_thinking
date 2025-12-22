@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+//Animacao serve para componentes ja em tela
+//Transicao para componentes que estao entrando e/ou saindo de tela
+
 struct AnimationBootcamp: View {
     
     @State var isAnimated: Bool = false
